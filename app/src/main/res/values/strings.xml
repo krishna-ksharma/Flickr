@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Flickr</string>
+    <string name="photo">Photo</string>
+    <string name="network_error">Could not load photos from Flickr.\nSwipe down to retry.</string>
+    <string name="thumb_url" translatable="false">https://farm%1$d.staticflickr.com/%2$s/%3$s_%4$s_s.jpg</string>
+    <string name="photo_url" translatable="false">https://farm%1$d.staticflickr.com/%2$s/%3$s_%4$s.jpg</string>
+</resources>
