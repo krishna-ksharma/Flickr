@@ -24,7 +24,7 @@
                 android:hint="Tags Search"/>
     </com.google.android.material.textfield.TextInputLayout>
     <Button
-            android:text="Search"
+            android:text="@string/search"
             android:layout_width="0dp"
             android:background="@color/colorAccent"
             android:textColor="@color/colorWhite"

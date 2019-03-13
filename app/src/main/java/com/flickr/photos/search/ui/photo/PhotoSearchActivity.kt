@@ -14,7 +14,7 @@ class PhotoSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        title = getString(R.string.photo)
+        title = getString(R.string.search)
         addPhotosFragment()
     }
 
