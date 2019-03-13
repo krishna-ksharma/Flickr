@@ -5,7 +5,7 @@ This application loads the photos and details (you search) from Flickr image hos
   - Tags on the Photo
   - Thumb image of the Photo
   
- ![Alt text](/screenshots/photo-list.jpg?raw=true "Photos") ![Alt text](/screenshots/search.jpg?raw=true "Search")
+ ![Alt text](/screenshots/photo-list.jpg?raw=true "Photos") ![Alt text](/screenshots/photo-search.jpg?raw=true "Search") ![Alt text](/screenshots/photo-detail.jpg?raw=true "Phot Detail")
  
  
 # Tech Stack
