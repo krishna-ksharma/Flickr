@@ -11,8 +11,7 @@ import retrofit2.Response
 class PageKeyedPhotoDataSource(private val tags: String, private val photosNetworkDataSource: PhotosNetworkDataSource) :
     PageKeyedDataSource<Int, Photo>() {
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Photo>) {
-        val config = createPhotoConfiguration()
-        config.params["page"] = 1.toString()
+        val config = createPhotoConfiguration(1)
         photosNetworkDataSource.loadPhotos((object : ApiCallback<PhotosResponse>() {
             override fun onSuccess(photosResponse: PhotosResponse) {
                 callback.onResult(photosResponse.photos.photo, null, 2)
@@ -24,8 +23,7 @@ class PageKeyedPhotoDataSource(private val tags: String, private val photosNetwo
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Photo>) {
-        val config = createPhotoConfiguration()
-        config.params["page"] = params.key.toString()
+        val config = createPhotoConfiguration(params.key)
         photosNetworkDataSource.loadPhotos((object : ApiCallback<PhotosResponse>() {
             override fun onSuccess(photosResponse: PhotosResponse) {
                 callback.onResult(photosResponse.photos.photo, params.key + 1)
@@ -33,11 +31,12 @@ class PageKeyedPhotoDataSource(private val tags: String, private val photosNetwo
         }), config.params)
     }
 
-    private fun createPhotoConfiguration(): PhotoConfig {
+    private fun createPhotoConfiguration(pageKey: Int): PhotoConfig {
         val params = mutableMapOf<String, String>()
         params["method"] = "flickr.photos.search"
         params["format"] = "json"
         params["nojsoncallback"] = "1"
+        params["page"] = pageKey.toString()
         params["per_page"] = "50"
         params["api_key"] = BuildConfig.AAP_KEY
         params["tags"] = tags

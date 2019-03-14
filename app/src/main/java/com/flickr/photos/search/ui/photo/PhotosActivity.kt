@@ -13,7 +13,9 @@ class PhotosActivity : AppCompatActivity() {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment)
-        addPhotosFragment("BMW")
+        if (savedInstanceState == null) {
+            addPhotosFragment("BMW")
+        }
     }
 
     private fun addPhotosFragment(tagKey: String) {

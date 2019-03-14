@@ -36,6 +36,7 @@ class PhotosFragment : Fragment() {
         super.onCreate(savedInstanceState)
         tagKey = arguments!!.getString(SEARCH_KEY)
         photosViewModel = ViewModelProviders.of(this, viewModelFactory).get(PhotosViewModel::class.java)
+        onRefresh()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -54,7 +55,7 @@ class PhotosFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        onRefresh()
+        observePhotos()
         swipeRefresh.setOnRefreshListener {
             swipeRefresh.isRefreshing = false
             onRefresh()
@@ -66,10 +67,14 @@ class PhotosFragment : Fragment() {
         super.onAttach(context)
     }
 
-    private fun onRefresh() {
-        photosViewModel.loadPhotos(tagKey).observe(this, Observer { photos ->
+    private fun observePhotos() {
+        photosViewModel.photosResult?.observe(this, Observer { photos ->
             photosAdapter.submitList(photos)
         })
+    }
+
+    private fun onRefresh() {
+        photosViewModel.loadPhotos(tagKey)
     }
 
     companion object {

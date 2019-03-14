@@ -8,12 +8,10 @@ import com.flickr.photos.search.data.PhotosRepository
 import javax.inject.Inject
 
 class PhotosViewModel @Inject constructor(private val repository: PhotosRepository) : ViewModel() {
-
-    fun loadPhotos(tags: String): LiveData<PagedList<Photo>> {
-        return repository.loadPhotos(tags)
-    }
-
-    fun photosResult(): LiveData<PagedList<Photo>> {
-        return repository.photosResult
+    var photosResult: LiveData<PagedList<Photo>>? = null
+    fun loadPhotos(tags: String) {
+        if (photosResult == null) {
+            photosResult = repository.loadPhotos(tags)
+        }
     }
 }

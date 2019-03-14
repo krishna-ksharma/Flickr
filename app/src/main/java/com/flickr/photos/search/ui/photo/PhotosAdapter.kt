@@ -1,7 +1,6 @@
 package com.flickr.photos.search.ui.photo
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,15 +63,11 @@ class PhotosAdapter(private val context: Context) :
         }
 
         private fun buildThumbUrl(photo: Photo): String {
-            val url = itemView.resources.getString(R.string.thumb_url, photo.farm, photo.server, photo.id, photo.secret)
-            Log.d("KK", "ThumbUrl $url ")
-            return url
+            return itemView.resources.getString(R.string.thumb_url, photo.farm, photo.server, photo.id, photo.secret)
         }
 
         private fun buildPhotoUrl(photo: Photo): String {
-            val url = itemView.resources.getString(R.string.photo_url, photo.farm, photo.server, photo.id, photo.secret)
-            Log.d("KK", "ThumbUrl $url ")
-            return url
+            return itemView.resources.getString(R.string.photo_url, photo.farm, photo.server, photo.id, photo.secret)
         }
     }
 }
