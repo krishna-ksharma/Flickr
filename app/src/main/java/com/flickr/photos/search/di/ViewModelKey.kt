@@ -1,4 +1,4 @@
-package com.wipro.assignment.di
+package com.flickr.photos.api.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

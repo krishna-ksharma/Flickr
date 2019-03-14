@@ -3,7 +3,7 @@ package com.flickr.photos.search
 import android.app.Activity
 import android.app.Application
 import androidx.fragment.app.Fragment
-import com.wipro.assignment.di.DaggerAppComponent
+import com.flickr.photos.api.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector

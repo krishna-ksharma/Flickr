@@ -45,7 +45,7 @@ class ApiModule(private val baseUrl: String) {
 
     @Provides
     @Singleton
-    fun provideFactsApi(Retrofit: Retrofit): FlickrApi {
+    fun provideFlickrApi(Retrofit: Retrofit): FlickrApi {
         return Retrofit.create(FlickrApi::class.java)
     }
 }

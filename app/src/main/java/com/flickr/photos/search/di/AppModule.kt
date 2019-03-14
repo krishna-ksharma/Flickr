@@ -1,4 +1,4 @@
-package com.wipro.assignment.di
+package com.flickr.photos.api.di
 
 import android.content.Context
 import com.flickr.photos.search.FlickrApplication

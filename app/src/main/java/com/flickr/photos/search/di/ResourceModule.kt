@@ -1,4 +1,4 @@
-package com.wipro.assignment.di
+package com.flickr.photos.api.di
 
 import com.flickr.photos.search.data.PhotosNetworkDataSource
 import com.flickr.photos.search.data.PhotosRepository

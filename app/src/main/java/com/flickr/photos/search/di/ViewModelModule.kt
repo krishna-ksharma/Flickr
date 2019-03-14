@@ -1,8 +1,8 @@
-package com.wipro.assignment.di
+package com.flickr.photos.search.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.flickr.photos.search.di.ViewModelFactory
+import com.flickr.photos.api.di.ViewModelKey
 import com.flickr.photos.search.ui.viewmodel.PhotosViewModel
 import dagger.Binds
 import dagger.Module
@@ -13,7 +13,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(PhotosViewModel::class)
-    abstract fun bindFactsViewModel(photosViewModel: PhotosViewModel): ViewModel
+    abstract fun bindPhotosViewModel(photosViewModel: PhotosViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory

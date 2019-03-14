@@ -1,6 +1,7 @@
-package com.wipro.assignment.di
+package com.flickr.photos.api.di
 
 import com.flickr.photos.search.FlickrApplication
+import com.flickr.photos.search.di.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
