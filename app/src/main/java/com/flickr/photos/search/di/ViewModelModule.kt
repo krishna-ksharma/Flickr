@@ -2,7 +2,6 @@ package com.flickr.photos.search.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.flickr.photos.api.di.ViewModelKey
 import com.flickr.photos.search.ui.viewmodel.PhotosViewModel
 import dagger.Binds
 import dagger.Module

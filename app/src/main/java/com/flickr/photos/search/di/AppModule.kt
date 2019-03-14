@@ -1,4 +1,4 @@
-package com.flickr.photos.api.di
+package com.flickr.photos.search.di
 
 import android.content.Context
 import com.flickr.photos.search.FlickrApplication

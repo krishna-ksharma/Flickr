@@ -1,6 +1,5 @@
-package com.flickr.photos.api.di
+package com.flickr.photos.search.di
 
-import com.flickr.photos.search.di.ViewModelModule
 import com.flickr.photos.search.ui.photo.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

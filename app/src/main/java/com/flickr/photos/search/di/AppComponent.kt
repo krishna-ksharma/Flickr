@@ -1,7 +1,6 @@
-package com.flickr.photos.api.di
+package com.flickr.photos.search.di
 
 import com.flickr.photos.search.FlickrApplication
-import com.flickr.photos.search.di.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -9,7 +8,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [AndroidSupportInjectionModule::class, AppModule::class, ViewModelModule::class, ResourceModule::class, UiModule::class])
-public interface AppComponent {
+interface AppComponent {
     @Component.Builder
     interface Builder {
         @BindsInstance
@@ -18,5 +17,5 @@ public interface AppComponent {
         fun build(): AppComponent
     }
 
-    abstract fun inject(app: FlickrApplication)
+    fun inject(app: FlickrApplication)
 }

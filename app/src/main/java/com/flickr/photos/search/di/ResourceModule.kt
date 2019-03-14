@@ -1,4 +1,4 @@
-package com.flickr.photos.api.di
+package com.flickr.photos.search.di
 
 import com.flickr.photos.search.data.PhotosNetworkDataSource
 import com.flickr.photos.search.data.PhotosRepository
