@@ -30,5 +30,4 @@ ext {
     compileSdkVersion = 28
     buildToolsVersion = '28.0.3'
     daggerVersion = '2.16'
-    roomVersion = '2.1.0-alpha04'
 }
