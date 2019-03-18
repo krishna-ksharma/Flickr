@@ -17,5 +17,5 @@ To build this application have used following libraries/pattern
 - [Retrofit](https://square.github.io/retrofit/)
 - [Dagger](https://google.github.io/dagger/android.html)
 - [Android architecture components](https://developer.android.com/topic/libraries/architecture)
-- [Android Paging Library] (https://developer.android.com/topic/libraries/architecture/paging)
-- [Android Navigation Component] (https://developer.android.com/guide/navigation)
+- [Android Paging Library](https://developer.android.com/topic/libraries/architecture/paging)
+- [Android Navigation Component](https://developer.android.com/guide/navigation)
