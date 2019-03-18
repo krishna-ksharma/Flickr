@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.flickr.photos.search.R
+import com.flickr.photos.search.hideKeyboard
 import kotlinx.android.synthetic.main.fragment_photo_search.*
 
 class PhotoSearchFragment : Fragment() {
@@ -16,17 +18,16 @@ class PhotoSearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         searchButton.setOnClickListener {
-            activity?.finish()
-            PhotosActivity.launch(
-                requireContext(),
-                editSearch.text.toString()
-            )
+            searchButton.hideKeyboard()
+            navigateToMainScreen()
         }
     }
 
-    companion object {
-        fun newInstance(): PhotoSearchFragment {
-            return PhotoSearchFragment()
-        }
+    private fun navigateToMainScreen() {
+        val bundle = Bundle()
+        bundle.putString(PhotosFragment.SEARCH_KEY, editSearch.text.toString().trim())
+        val navController = Navigation.findNavController(requireActivity(), R.id.fragment_container)
+        navController.popBackStack(R.id.photosFragment, true)
+        navController.navigate(R.id.photosFragment, bundle)
     }
 }

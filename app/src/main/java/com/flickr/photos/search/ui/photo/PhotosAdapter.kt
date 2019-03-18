@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.photo_item.view.*
 
-class PhotosAdapter(private val context: Context) :
+class PhotosAdapter(private val context: Context, val clickListener: OnItemClickListener) :
     PagedListAdapter<Photo, PhotosAdapter.ViewHolder>(DIFF_UTIL_CALLBACK) {
 
     companion object {
@@ -49,7 +49,7 @@ class PhotosAdapter(private val context: Context) :
             val photo = getItem(adapterPosition)!!
             val photoParcelable =
                 PhotoParcelable(photo.title, buildPhotoUrl(photo), photo.tags)
-            PhotoDetailActivity.launch(v.context, photoParcelable)
+            clickListener.onItemClicked(photoParcelable)
         }
 
         private fun loadThumbImage(photo: Photo) {
@@ -69,5 +69,9 @@ class PhotosAdapter(private val context: Context) :
         private fun buildPhotoUrl(photo: Photo): String {
             return itemView.resources.getString(R.string.photo_url, photo.farm, photo.server, photo.id, photo.secret)
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClicked(photoParcelable: PhotoParcelable)
     }
 }

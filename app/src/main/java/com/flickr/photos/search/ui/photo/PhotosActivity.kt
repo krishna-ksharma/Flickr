@@ -1,43 +1,39 @@
 package com.flickr.photos.search.ui.photo
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import com.flickr.photos.search.R
 import dagger.android.AndroidInjection
 
 class PhotosActivity : AppCompatActivity() {
+    lateinit var navHostFragment: NavHostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment)
-        if (savedInstanceState == null) {
-            addPhotosFragment("BMW")
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+        navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
+            supportActionBar!!.title = destination.label
+            when (destination.id) {
+                R.id.photoDetailFragment,
+                R.id.photoSearchFragment -> {
+                    supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+                }
+                else -> supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+            }
         }
     }
 
-    private fun addPhotosFragment(tagKey: String) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        val fragment = PhotosFragment.newInstance(tagKey)
-        fragmentTransaction.replace(R.id.fragment_container, fragment)
-        fragmentTransaction.commit()
-    }
-
-    companion object {
-        private const val TAG = "SearchKey"
-        fun launch(context: Context, tagKey: String) {
-            val bundle = Bundle()
-            bundle.putString(TAG, tagKey)
-            val intent = Intent(context, PhotosActivity::class.java)
-            intent.putExtras(bundle)
-            context.startActivity(intent)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                navHostFragment.navController.popBackStack()
+                return true
+            }
         }
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        addPhotosFragment(intent.extras.getString(TAG))
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -6,6 +6,7 @@ This application loads the photos and details (you search) from Flickr image hos
   - Thumb image of the Photo
   
  ![Alt text](/screenshots/photo-list.jpg?raw=true "Photos") ![Alt text](/screenshots/photo-search.jpg?raw=true "Search") ![Alt text](/screenshots/photo-detail.jpg?raw=true "Phot Detail")
+ ![Alt text](/screenshots/Navigation.png?raw=true "Navigation")
  
  
 # Tech Stack
@@ -16,3 +17,5 @@ To build this application have used following libraries/pattern
 - [Retrofit](https://square.github.io/retrofit/)
 - [Dagger](https://google.github.io/dagger/android.html)
 - [Android architecture components](https://developer.android.com/topic/libraries/architecture)
+- [Android Paging Library] (https://developer.android.com/topic/libraries/architecture/paging)
+- [Android Navigation Component] (https://developer.android.com/guide/navigation)

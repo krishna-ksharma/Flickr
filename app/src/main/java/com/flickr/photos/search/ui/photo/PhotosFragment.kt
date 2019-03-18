@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.flickr.photos.search.R
 import com.flickr.photos.search.di.ViewModelFactory
@@ -26,7 +27,14 @@ class PhotosFragment : Fragment() {
     lateinit var tagKey: String
 
     private fun setupAdapter() {
-        photosAdapter = PhotosAdapter(requireContext())
+        photosAdapter = PhotosAdapter(requireContext(), object : PhotosAdapter.OnItemClickListener {
+            override fun onItemClicked(photoParcelable: PhotoParcelable) {
+                val bundle = Bundle()
+                bundle.putParcelable(PhotoDetailFragment.META_INFO, photoParcelable)
+                Navigation.findNavController(requireActivity(), R.id.fragment_container)
+                    .navigate(R.id.photoDetailFragment, bundle)
+            }
+        })
         photosRecyclerView.setHasFixedSize(true)
         photosRecyclerView.layoutManager = LinearLayoutManager(context)
         photosRecyclerView.adapter = photosAdapter
@@ -47,9 +55,8 @@ class PhotosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupAdapter()
         searchFab.setOnClickListener {
-            PhotoSearchActivity.launch(
-                requireContext()
-            )
+            Navigation.findNavController(requireActivity(), R.id.fragment_container)
+                .navigate(R.id.photoSearchFragment)
         }
     }
 
@@ -78,13 +85,6 @@ class PhotosFragment : Fragment() {
     }
 
     companion object {
-        private const val SEARCH_KEY = "key"
-        fun newInstance(tagKey: String): PhotosFragment {
-            val fragment = PhotosFragment()
-            val bundle = Bundle()
-            bundle.putString(SEARCH_KEY, tagKey)
-            fragment.arguments = bundle
-            return fragment
-        }
+        const val SEARCH_KEY = "key"
     }
 }

@@ -51,6 +51,9 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'jp.wasabeef:picasso-transformations:2.1.2'
 
+    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0'
+    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
+
     // Dagger2
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     testAnnotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"

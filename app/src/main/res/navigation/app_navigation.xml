@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/app_navigation"
+            app:startDestination="@id/photosFragment">
+
+    <fragment android:id="@+id/photosFragment"
+              android:name="com.flickr.photos.search.ui.photo.PhotosFragment"
+              tools:layout="@layout/fragment_photos"
+              android:label="Photos">
+        <argument android:name="key"
+                  android:defaultValue="BMW"
+                  app:argType="string"/>
+        <action android:id="@+id/action_photosFragment_to_photoDetailFragment"
+                app:destination="@id/photoDetailFragment"/>
+        <action android:id="@+id/action_photosFragment_to_photoSearchFragment"
+                app:destination="@id/photoSearchFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/photoDetailFragment"
+              android:name="com.flickr.photos.search.ui.photo.PhotoDetailFragment"
+              tools:layout="@layout/fragment_photo_detail"
+              android:label="@string/photo"/>
+
+    <fragment android:id="@+id/photoSearchFragment"
+              android:name="com.flickr.photos.search.ui.photo.PhotoSearchFragment"
+              tools:layout="@layout/fragment_photo_search"
+              android:label="@string/search"/>
+</navigation>

@@ -37,13 +37,6 @@ class PhotoDetailFragment : Fragment() {
     }
 
     companion object {
-        private const val META_INFO = "photoMetaData"
-        fun newInstance(parcelable: PhotoParcelable): PhotoDetailFragment {
-            val fragment = PhotoDetailFragment()
-            val bundle = Bundle()
-            bundle.putParcelable(META_INFO, parcelable)
-            fragment.arguments = bundle
-            return fragment
-        }
+        const val META_INFO = "photoMetaData"
     }
 }

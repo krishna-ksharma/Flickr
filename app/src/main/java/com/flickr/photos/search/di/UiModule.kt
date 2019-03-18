@@ -1,6 +1,9 @@
 package com.flickr.photos.search.di
 
-import com.flickr.photos.search.ui.photo.*
+import com.flickr.photos.search.ui.photo.PhotoDetailFragment
+import com.flickr.photos.search.ui.photo.PhotoSearchFragment
+import com.flickr.photos.search.ui.photo.PhotosActivity
+import com.flickr.photos.search.ui.photo.PhotosFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,12 +11,6 @@ import dagger.android.ContributesAndroidInjector
 abstract class UiModule {
     @ContributesAndroidInjector
     abstract fun bindPhotosActivity(): PhotosActivity
-
-    @ContributesAndroidInjector
-    abstract fun bindPhotoDetailActivity(): PhotoDetailActivity
-
-    @ContributesAndroidInjector
-    abstract fun bindPhotoSearchActivity(): PhotoSearchActivity
 
     @ContributesAndroidInjector(modules = [ResourceModule::class, ViewModelModule::class])
     abstract fun bindPhotosFragment(): PhotosFragment
